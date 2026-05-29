@@ -45,21 +45,21 @@ LEFT JOIN silver.invoice_item ii ON tm.id_titulo_movimento = ii.id_title_movimen
 LEFT JOIN silver.invoice i ON ii.parent = i.id
 LEFT JOIN silver.insurance_reg_set ir ON ir.id = i.id_set
 LEFT JOIN silver.insurance_registration irs ON irs.id = ir.parent
-LEFT JOIN silver.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN silver.insurance_reg_set_coverage irsc ON irsc.parent = ir.id
 LEFT JOIN silver.INSURANCE_REG_SET_COV_TRAILER irsct on irsct.PARENT = irsc.ID
+LEFT JOIN silver.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN silver.INSURANCE_VEHICLE iv on iv.ID = irsc.ID_VEHICLE
 LEFT JOIN silver.INSURANCE_TRAILER it on it.ID = irsct.ID_TRAILER
 LEFT JOIN silver.insurance_trailer itt on itt.id = irsc.ID_TRAILER
 LEFT JOIN silver.insurance_status isss on isss.id = irsc.id_status
+
 LEFT JOIN silver.vendedor v ON v.codigo = ir.id_consultant
 LEFT JOIN silver.representante r ON r.codigo = i.id_unity
 LEFT JOIN silver.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 	
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
-AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= date_add('year',-1,current_date)
 AND tm.crc_cpg = 'R'
-AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) <= 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) >= 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
@@ -119,21 +119,21 @@ LEFT JOIN stcoop.invoice_item ii ON tm.id_titulo_movimento = ii.id_title_movimen
 LEFT JOIN stcoop.invoice i ON ii.parent = i.id
 LEFT JOIN stcoop.insurance_reg_set ir ON ir.id = i.id_set
 LEFT JOIN stcoop.insurance_registration irs ON irs.id = ir.parent
-LEFT JOIN stcoop.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN stcoop.insurance_reg_set_coverage irsc ON irsc.parent = ir.id
 LEFT JOIN stcoop.INSURANCE_REG_SET_COV_TRAILER irsct on irsct.PARENT = irsc.ID
+LEFT JOIN stcoop.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN stcoop.INSURANCE_VEHICLE iv on iv.ID = irsc.ID_VEHICLE
 LEFT JOIN stcoop.INSURANCE_TRAILER it on it.ID = irsct.ID_TRAILER
 LEFT JOIN stcoop.insurance_trailer itt on itt.id = irsc.ID_TRAILER
 LEFT JOIN stcoop.insurance_status isss on isss.id = irsc.id_status
+
 LEFT JOIN stcoop.vendedor v ON v.codigo = ir.id_consultant
 LEFT JOIN stcoop.representante r ON r.codigo = i.id_unity
 LEFT JOIN stcoop.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 	
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
-AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= date_add('year',-1,current_date)
 AND tm.crc_cpg = 'R'
-AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) <= 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) >= 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
@@ -193,21 +193,21 @@ LEFT JOIN viavante.invoice_item ii ON tm.id_titulo_movimento = ii.id_title_movim
 LEFT JOIN viavante.invoice i ON ii.parent = i.id
 LEFT JOIN viavante.insurance_reg_set ir ON ir.id = i.id_set
 LEFT JOIN viavante.insurance_registration irs ON irs.id = ir.parent
-LEFT JOIN viavante.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN viavante.insurance_reg_set_coverage irsc ON irsc.parent = ir.id
 LEFT JOIN viavante.INSURANCE_REG_SET_COV_TRAILER irsct on irsct.PARENT = irsc.ID
+LEFT JOIN viavante.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN viavante.INSURANCE_VEHICLE iv on iv.ID = irsc.ID_VEHICLE
 LEFT JOIN viavante.INSURANCE_TRAILER it on it.ID = irsct.ID_TRAILER
 LEFT JOIN viavante.insurance_trailer itt on itt.id = irsc.ID_TRAILER
 LEFT JOIN viavante.insurance_status isss on isss.id = irsc.id_status
+
 LEFT JOIN viavante.vendedor v ON v.codigo = ir.id_consultant
 LEFT JOIN viavante.representante r ON r.codigo = i.id_unity
 LEFT JOIN viavante.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 	
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
-AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= date_add('year',-1,current_date)
 AND tm.crc_cpg = 'R'
-AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) <= 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) >= 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
@@ -266,21 +266,21 @@ LEFT JOIN tag.invoice_item ii ON tm.id_titulo_movimento = ii.id_title_moviment
 LEFT JOIN tag.invoice i ON ii.parent = i.id
 LEFT JOIN tag.insurance_reg_set ir ON ir.id = i.id_set
 LEFT JOIN tag.insurance_registration irs ON irs.id = ir.parent
-LEFT JOIN tag.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN tag.insurance_reg_set_coverage irsc ON irsc.parent = ir.id
 LEFT JOIN tag.INSURANCE_REG_SET_COV_TRAILER irsct on irsct.PARENT = irsc.ID
+LEFT JOIN tag.insurance_status ins ON irs.id_status = ins.id
 LEFT JOIN tag.INSURANCE_VEHICLE iv on iv.ID = irsc.ID_VEHICLE
 LEFT JOIN tag.INSURANCE_TRAILER it on it.ID = irsct.ID_TRAILER
 LEFT JOIN tag.insurance_trailer itt on itt.id = irsc.ID_TRAILER
 LEFT JOIN tag.insurance_status isss on isss.id = irsc.id_status
+
 LEFT JOIN tag.vendedor v ON v.codigo = ir.id_consultant
 LEFT JOIN tag.representante r ON r.codigo = i.id_unity
 LEFT JOIN tag.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 	
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
-AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= date_add('year',-1,current_date)
 AND tm.crc_cpg = 'R'
-AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) <= 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) >= 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (

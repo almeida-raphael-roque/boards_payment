@@ -60,6 +60,7 @@ LEFT JOIN silver.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
 AND tm.crc_cpg = 'R'
 AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) > 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) < 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
@@ -134,6 +135,7 @@ LEFT JOIN stcoop.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
 AND tm.crc_cpg = 'R'
 AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) > 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) < 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
@@ -208,6 +210,7 @@ LEFT JOIN viavante.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
 AND tm.crc_cpg = 'R'
 AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) > 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) < 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
@@ -281,6 +284,7 @@ LEFT JOIN tag.catalogo cata ON cata.cnpj_cpf = r.cnpj_cpf
 WHERE (tm.ponteiro_consolidado IS NULL OR tm.ponteiro_consolidado= 0)
 AND tm.crc_cpg = 'R'
 AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) > 0
+AND DATE_DIFF('day', CAST(tm.data_vencimento AS DATE), current_date) < 45
 AND CAST(CAST(tm.data_emissao AS TIMESTAMP) AS DATE) >= DATE('2026-01-01') 
 AND ins.description IN ('ATIVO','ATIVA')
 AND (
